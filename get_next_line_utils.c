@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 20:22:32 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/14 12:14:24 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/14 16:44:28 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,6 @@ void	*ft_memset(void *dest, int c, size_t len)
 	return (memory);
 }
 
-void	ft_bzero(void *b, size_t len)
-{
-	ft_memset(b, '\0', len);
-}
-
 void	*ft_calloc(size_t number, size_t size)
 {
 	void	*ptr;
@@ -124,7 +119,7 @@ void	*ft_calloc(size_t number, size_t size)
 	ptr = malloc(number * size);
 	if (!ptr)
 		return (NULL);
-	ft_bzero (ptr, number * size);
+	ft_memset(ptr, '\0', number * size);
 	return (ptr);
 }
 
