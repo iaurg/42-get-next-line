@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:44:48 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/15 11:08:49 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/15 11:19:10 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,13 @@ char	*split_line(char **holder)
 		i++;
 	}
 	//printf("----%s----\n", *holder);
-
 	if (i == 0 || !*holder)
 		return (NULL);
 	//printf("****%d****\n", i);
 	temp_holder = *holder;
 	holder_copy = ft_substr(temp_holder, 0, i);
 	*holder = ft_strdup("");
-	free(temp_holder);
+	free (temp_holder);
 	temp_holder = NULL;
 	return(holder_copy);
 }
