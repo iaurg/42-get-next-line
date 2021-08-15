@@ -6,18 +6,12 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 13:44:48 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/15 12:10:12 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/15 12:14:23 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-
-/*
-malloc: *** error for object 0x7f97475001f0: pointer being freed was not allocated
-gnlTest(86115,0x10dd805c0) malloc: *** set a breakpoint in malloc_error_break to debug
-*/
 char	*get_next_line(int fd)
 {
 	static char	*holder = NULL;
@@ -30,7 +24,7 @@ char	*get_next_line(int fd)
 	buffer = malloc(BUFFER_SIZE + 1 * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	if (read(fd, buffer, 0) < 0) // Catch errors after all
+	if (read(fd, buffer, 0) < 0)
 	{
 		free_and_reset(buffer);
 		return (NULL);
@@ -41,7 +35,7 @@ char	*get_next_line(int fd)
 	free_and_reset(buffer);
 	if (read_fd <= 0 && !final_line)
 		return (NULL);
-	return(final_line);
+	return (final_line);
 }
 
 ssize_t	read_line(char **holder, char **buffer, char **final_line, int fd)
@@ -53,8 +47,8 @@ ssize_t	read_line(char **holder, char **buffer, char **final_line, int fd)
 	while (!ft_strchr(*holder, '\n') && read_result)
 	{
 		read_result = read(fd, *buffer, BUFFER_SIZE);
-		(*buffer)[read_result] = '\0'; // Allow string work
-		temp_result = *holder; // Prepare to join
+		(*buffer)[read_result] = '\0';
+		temp_result = *holder;
 		*holder = ft_strjoin(temp_result, *buffer);
 		free(temp_result);
 	}
@@ -65,7 +59,7 @@ ssize_t	read_line(char **holder, char **buffer, char **final_line, int fd)
 		*holder = NULL;
 		return (0);
 	}
-	if(!*final_line)
+	if (!*final_line)
 		free_and_reset(*final_line);
 	return (read_result);
 }
@@ -92,7 +86,7 @@ char	*split_line(char **holder)
 	holder_copy = ft_substr(temp_holder, 0, i);
 	*holder = ft_strdup(&(*holder)[i]);
 	free_and_reset(temp_holder);
-	return(holder_copy);
+	return (holder_copy);
 }
 
 void	free_and_reset(void *var)
