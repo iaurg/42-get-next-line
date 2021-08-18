@@ -32,6 +32,11 @@ int main()
 ...
 ```
 
+Run with valgrind to see memory leaks:
+```sh
+clang -Wall -Wextra -Werror -g -D BUFFER_SIZE=42 *.c && valgrind --tool=memcheck -q --leak-check=full --show-leak-kinds=all -s --track-origins=yes ./a.out | cat -e
+```
+
 ## Usage
 
 ```sh
