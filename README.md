@@ -22,13 +22,12 @@ Return line read from file descriptor reading BUFFER_SIZE bytes from file descri
 ...
 int main()
 {
-    char *line;
-    int fd;
+    char *temp;
+	int file_descriptor = open("./41_no_nl", O_RDONLY);
 
-    fd = open("./file-path", O_RDONLY);
-    get_next_line(0, &line);
-    printf("%s", line)
-    free(line); // Remember to free your allocated variable
+	temp = get_next_line(file_descriptor);
+	printf("%s", temp);
+	free(temp); // Remember to free your allocated variable
 }
 ...
 ```
