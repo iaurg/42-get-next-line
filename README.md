@@ -12,7 +12,7 @@ char	*get_next_line(int fd)
 ```
 Return line read from file descriptor reading BUFFER_SIZE bytes from file descriptor. You can't read entire file then return, you need to print line by line.
 
-Thinking in GNL:
+### Thinking in GNL
 ![GNL](./assets/draw-gnl.png)
 
 ## Tests
